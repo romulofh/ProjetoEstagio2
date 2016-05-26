@@ -1,0 +1,8 @@
+<h1> Show Preference Categories </h1>
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Preference Categories :</strong>
+  <div>  <%= @preference_category.category_name.split %> </div>
+
+<%= link_to 'Edit', edit_preference_category_path(@preference_category) %> |
+<%= link_to 'Back', preference_categories_path %>

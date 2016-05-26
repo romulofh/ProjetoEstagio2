@@ -1,0 +1,8 @@
+<h1> Show Preference Sources </h1>
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Preference Sources :</strong>
+  <div>  <%= @preference_source.source_name.split %> </div>
+
+<%= link_to 'Edit', edit_preference_source_path(@preference_source) %> |
+<%= link_to 'Back', preference_sources_path %>

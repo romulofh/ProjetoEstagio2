@@ -1,0 +1,22 @@
+<%= form_for(User.new, url: users_login_path) do |u| %>
+  <% if alert %>
+    <div id="error_explanation">
+        <p><%= alert %></p>
+    </div>
+  <% end %>
+    <div class: 'control-groups'>
+      <%= u.label :email, class: 'control_label'%>
+      <div>
+        <%= u.text_field :email %>
+      </div>
+    </div>
+    <div class: 'control-groups'>
+      <%= u.label :password, class: 'control_label'%>
+      <div>
+        <%= u.password_field :password %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= u.submit "Login" %>
+    </div>
+<% end %>

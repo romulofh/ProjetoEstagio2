@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Preference Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%if @preference_categories.kind_of?(Array) %>
+      <% @preference_categories.each do |pc| %>
+        <tr>
+          <td><%= pc.category_name %></td>
+          <td><%= link_to 'Show', pc %></td>
+          <td><%= link_to 'Edit', edit_preference_category_path(pc) %></td>
+          <td><%= button_to 'Destroy', pc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <%end%>
+    <%else%>
+      <tr>
+        <td><%= @preference_categories.category_name %></td>
+        <td><%= link_to 'Show', @preference_categories %></td>
+        <td><%= link_to 'Edit', edit_preference_category_path(@preference_categories) %></td>
+        <td><%= button_to 'Destroy', @preference_categories, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New preference categories', new_preference_category_path %>

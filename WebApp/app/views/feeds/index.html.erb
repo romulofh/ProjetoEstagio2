@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing feeds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feed</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= current_user.id %>
+    <% @feed.each do |f| %>
+      <tr>
+        <td><%= f.source_name %></td>
+        <td><%= f.category_name %></td>
+        <td><%= f.url %></td>
+        <td><%= link_to 'Show', f %></td>
+        <td><%= link_to 'Edit', edit_feed_path(f) %></td>
+        <td><%= button_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New feed', new_feed_path %>

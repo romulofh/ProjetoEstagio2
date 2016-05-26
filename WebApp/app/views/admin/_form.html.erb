@@ -1,0 +1,43 @@
+<%= form_for(@admin) do |a| %>
+  <% if @admin.errors.any? %>
+    <div id="error_explanation">
+      <h2> <%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved: </h2>
+
+    <ul>
+    <% @admin.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+    <div class: 'control-groups'>
+      <%= a.label :name, class: 'control_label'%>
+      <div>
+        <%= a.text_field :name %>
+      </div>
+    </div>
+    <div class: 'control-groups'>
+      <%= a.label :email, class: 'control_label'%>
+      <div>
+        <%= a.text_field :email %>
+      </div>
+    </div>
+    <div class: 'control-groups'>
+      <%= a.label :password, class: 'control_label'%>
+      <div>
+        <%= a.password_field :password %>
+      </div>
+    </div>
+    <div class: 'control-groups'>
+      <%= a.label :password_confirmation, class: 'control_label'%>
+      <div>
+        <%= a.password_field :password_confirmation %>
+      </div>
+    </div>
+    <div class: 'control-groups'>
+      <%= check_box(:user, :admin,  {checked: true}) %>
+    </div>
+    <div class="actions">
+      <%= a.submit %>
+    </div>
+<% end %>

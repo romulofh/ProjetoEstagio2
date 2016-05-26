@@ -1,0 +1,28 @@
+<%= form_for(@feed) do |f| %>
+  <% if @feed.errors.any? %>
+    <div id="error_explanation">
+      <h2> <%= pluralize(@feed.errors.count, "error") %> prohibited this tag from being saved: </h2>
+
+    <ul>
+    <% @feed.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+    <div class: 'control-label'>
+      <%= f.label "Fonte"  %><br/>
+      <%= collection_select :feed, :source_name, Source.all, :name, :name, { :prompt => 'Select a Source' } %>
+    </div>
+    <div class: 'control-label'>
+      <%= f.label "Categories"  %><br/>
+      <%= collection_select :feed, :category_name, Category.all, :name, :name, { :prompt => 'Select a Category' } %>
+    </div>
+    <div class: 'control-label'>
+      <%= f.label "Url"  %><br/>
+      <%= f.text_field :url %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

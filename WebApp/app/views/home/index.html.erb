@@ -1,0 +1,79 @@
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="col-lg-3">
+          <!--Sidebar content-->
+          <a class="btn btn-primary btn-lg btn-block" href="#asunto" data-toggle="modal" role="button" data-toggle="tooltip" data-placement="right" title="Escolha suas preferencias">Preferencias assunto</a>
+          <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Preferencias fonte</a>
+        </div>
+        <div class="col-lg-9">
+          <!--Body content-->
+          <h1> NewsLine </h1>
+              <table>
+                <tr>
+                  <%if @rss.size> 1 %>
+                    <% @feeds.zip(@rss).each do |f, rss| %>
+                        <div>
+                          <%= f.category_name %>
+                          <%= f.source_name %>
+                        </div>
+                        <% rss.items.each do |item| %>
+                          <div>
+                              <% if item.description.blank? %>
+                                <%= link_to item.title, item.link%>
+                              <%else%>
+                                <%= link_to raw(item.description), item.link%>
+                              <%end%>
+                          </div>
+                        <%end%>
+                      <%end%>
+                    <%else%>
+                    <div>
+                      <% @feeds.each do |f| %>
+                        <%= f.category_name %>
+                        <%= f.source_name %>
+                      <%end%>
+                      <% @rss.each do |rss| %>
+                        <% rss.items.each do |item| %>
+                          <div>
+                            <% if item.description.blank? %>
+                              <%= link_to item.title, item.link%>
+                            <%else%>
+                              <%= link_to raw(item.description), item.link%>
+                            <%end%>
+                          </div>
+                        <%end%>
+                      <%end%>
+                    <%end%>
+                </tr>
+              </table>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" tabindex="-1" id="asunto" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-info">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Escolha suas preferências</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lista de preferências&hellip;</p>
+            <div class="checkbox">
+              <label><input type="checkbox" value="">Tecnologia</label>
+            </div>
+            <div class="checkbox">
+             <label><input type="checkbox" value="">Esportes</label>
+            </div>
+            <div class="checkbox">
+             <label><input type="checkbox" value="">Politica</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success">Salvar</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->

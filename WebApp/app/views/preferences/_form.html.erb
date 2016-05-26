@@ -1,0 +1,12 @@
+
+<%= form_for @preference_source, :url => preferences_path do |ps| %>
+
+    <div>
+       <%= ps.collection_check_boxes :source_name, Source.all, :name, :name %>
+    </div>
+
+
+    <div class="actions">
+      <%= ps.submit %>
+    </div>
+<%end%>

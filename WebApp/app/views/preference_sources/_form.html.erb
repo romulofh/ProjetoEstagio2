@@ -1,0 +1,20 @@
+<%= form_for(@preference_source) do |ps| %>
+  <% if @preference_source.errors.any? %>
+    <div id="error_explanation">
+      <h2> <%= pluralize(@preference_source.errors.count, "error") %> prohibited this tag from being saved: </h2>
+
+    <ul>
+    <% @preference_source.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+    <div class: 'control-label'>
+      <%= ps.label "Fonte"  %><br/>
+      <%= collection_check_boxes(:preference_source, :source_name, Source.all, :name, :name, include_hidden: false ) %>
+    </div>
+    <div class="actions">
+      <%= ps.submit %>
+    </div>
+<% end %>

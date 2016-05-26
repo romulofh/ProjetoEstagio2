@@ -1,0 +1,39 @@
+<!--<p id="notice"><%= notice %></p>-->
+
+
+<h1> NewsLine </h1>
+              <table>
+                <tr>
+                  <%if @rss.size> 1 %>
+                    <% @feeds.zip(@rss).each do |f, rss| %>
+                        <% rss.items.each do |item| %>
+                          <div>
+                              <%= f.category_name %>
+                              <%= f.source_name %>
+                              <%= link_to raw(item.description), item.link%>
+                          </div>
+                        <%end%>
+                      <%end%>
+                    <%else%>
+                    <div>
+                      <% @feeds.each do |f| %>
+                        <%= f.category_name %>
+                        <%= f.source_name %>
+                      <%end%>
+                      <% @rss.each do |rss| %>
+                        <% rss.items.each do |item| %>
+                          <div>
+                            <%= link_to raw(item.description), item.link%>
+                            <!--<%= link_to item.title, item.link%>-->
+                          </div>
+                        <%end%>
+                      <%end%>
+                    <%end%>
+                </tr>
+              </table>
+          </div>
+      </div>
+    </div>
+
+
+<!--<%= link_to 'Back', home_path %>-->
